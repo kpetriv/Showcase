@@ -1,6 +1,6 @@
+package com.kirilpetriv.showcase.network
+
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.kirilpetriv.showcase.network.Artwork
-import com.kirilpetriv.showcase.network.Page
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://api.artic.edu/api/v1"
+private const val BASE_URL = "https://api.artic.edu/api/v1/"
 
 interface ArtworkService {
 
@@ -20,7 +20,6 @@ interface ArtworkService {
     ): Page<Artwork>
 
     companion object {
-
         fun provide(): ArtworkService {
             val jsonConfig = Json {
                 ignoreUnknownKeys = true

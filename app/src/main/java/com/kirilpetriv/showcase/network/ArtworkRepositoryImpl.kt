@@ -1,6 +1,5 @@
 package com.kirilpetriv.showcase.network
 
-import ArtworkService
 import com.kirilpetriv.showcase.core.ArtworkRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

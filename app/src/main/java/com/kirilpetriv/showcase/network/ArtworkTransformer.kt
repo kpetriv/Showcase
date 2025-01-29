@@ -5,8 +5,8 @@ import com.kirilpetriv.showcase.network.Artwork as ArtworkDto
 
 internal fun ArtworkDto.toModel() = ArtworkModel(
     id = id,
-    title = title,
-    artist = artist,
-    description = description,
+    title = title ?: "Title is unknown",
+    artist = artist ?: "Artist is unknown",
+    description = description ?: "Description is unknown",
     imageUuid = imageUuid
 )

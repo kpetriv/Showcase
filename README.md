@@ -38,3 +38,10 @@ I will be using the compose navigation graph to navigate between the list and de
 I plan to write unit tests for the viewmodel, repository and transformer at the least to give a good coverage
 for the existing logic. Using mockk for mocking the dependencies.
 Time permitting, I would like to have end to end tests (UI) for the main A/C's of the app (the list of 5 at the top)
+
+### Tech stack:
+Network: Retrofit
+Dependency injection: Koin
+Architecture: MVVM
+Navigation: Compose navigation
+Testing: JUnit, Mockk, Espresso

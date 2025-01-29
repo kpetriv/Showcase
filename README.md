@@ -47,3 +47,9 @@ Image handling: Coil
 Serialization: Kotlin serialization
 Navigation: Compose navigation
 Testing: JUnit, Mockk, Espresso
+
+## Notes
+The API brings a randomized subset of items, so the list may be different each time. Some items 
+may have missing fields and are nullable. I didn't add any error handling for the missing fields
+as that is not the focus of the task. I assume that the API will always return the fields, so UI is
+not adjusted for missing fields. Default image placeholders can be used for items that are not there.

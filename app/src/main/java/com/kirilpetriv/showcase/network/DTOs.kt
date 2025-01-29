@@ -13,11 +13,11 @@ data class Artwork(
     @SerialName("id")
     val id: Long,
     @SerialName("title")
-    val title: String,
+    val title: String? = null,
     @SerialName("artist_display")
-    val artist: String,
+    val artist: String? = null,
     @SerialName("description")
-    val description: String,
+    val description: String? = null,
     @SerialName("image_id")
-    val imageUuid: String,
+    val imageUuid: String? = null,
 )

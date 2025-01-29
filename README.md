@@ -43,5 +43,7 @@ Time permitting, I would like to have end to end tests (UI) for the main A/C's o
 Network: Retrofit
 Dependency injection: Koin
 Architecture: MVVM
+Image handling: Coil
+Serialization: Kotlin serialization
 Navigation: Compose navigation
 Testing: JUnit, Mockk, Espresso

@@ -1,8 +1,10 @@
 package com.kirilpetriv.showcase.di
 
+import ArtworkService
+import com.kirilpetriv.showcase.network.ArtworkRepositoryImpl
 import org.koin.dsl.module
 
-// Dependency injection handling
 val showcaseModule = module {
-    single { Service.provide() }
+    single { ArtworkService.provide() }
+    single { ArtworkRepositoryImpl(get()) }
 }

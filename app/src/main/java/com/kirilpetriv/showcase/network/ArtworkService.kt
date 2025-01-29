@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.artic.edu/api/v1"
 
-interface Service {
+interface ArtworkService {
 
     @GET("artworks")
     suspend fun getArtworks(
@@ -21,7 +21,7 @@ interface Service {
 
     companion object {
 
-        fun provide(): Service {
+        fun provide(): ArtworkService {
             val jsonConfig = Json {
                 ignoreUnknownKeys = true
                 coerceInputValues = true
@@ -33,7 +33,7 @@ interface Service {
                 .addConverterFactory(jsonConfig.asConverterFactory(contentType = jsonContentType))
                 .build()
 
-            return retrofit.create(Service::class.java)
+            return retrofit.create(ArtworkService::class.java)
         }
     }
 }

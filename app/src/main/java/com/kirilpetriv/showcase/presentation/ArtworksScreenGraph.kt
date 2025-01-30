@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -96,7 +97,10 @@ internal fun ArtworkDetailScreen(
             TopAppBar(
                 title = { },
                 navigationIcon = {
-                    IconButton(onClick = onBack) {
+                    IconButton(
+                        onClick = onBack,
+                        modifier = Modifier.testTag("back_button")
+                    ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Default.ArrowBack,
                             contentDescription = "Back"
@@ -117,12 +121,16 @@ internal fun ArtworkDetailScreen(
             AsyncImage(
                 model = imageUrl,
                 contentDescription = "Artwork image",
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag("artwork_image")
             )
 
             Text(
                 text = getFormattedDescription(description),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag("artwork_description")
             )
         }
     }
@@ -165,14 +173,14 @@ private fun ArtworkResults(
         modifier = Modifier
             .padding(innerPadding)
             .statusBarsPadding()
-            .padding(top = 16.dp),
+            .testTag("artwork_list"),
         contentPadding = PaddingValues(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(artworks) { item ->
             Card(
                 onClick = { onArtwork(item.description, item.getMainImageUrl()) },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth().testTag("artwork_card")
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -183,12 +191,18 @@ private fun ArtworkResults(
                         AsyncImage(
                             model = item.getThumbnailImageUrl(),
                             contentDescription = "Artwork thumbnail",
-                            modifier = Modifier.size(75.dp)
+                            modifier = Modifier
+                                .size(75.dp)
+                                .testTag("artwork_thumbnail")
                         )
                     }
                     Column {
-                        Text(text = item.title, fontWeight = FontWeight.Bold)
-                        Text(text = item.artist)
+                        Text(
+                            text = item.title,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.testTag("artwork_title")
+                        )
+                        Text(text = item.artist, modifier = Modifier.testTag("artwork_artist"))
                     }
                 }
             }

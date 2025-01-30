@@ -40,8 +40,13 @@ android {
     }
 }
 
-dependencies {
+tasks.withType<Test> {
+    useJUnitPlatform()
+    // Fix for transitive dependency issue with ByteBuddy
+    jvmArgs("-Dnet.bytebuddy.experimental=true")
+}
 
+dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -70,5 +75,9 @@ dependencies {
     implementation(libs.ui.coil)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlin.test.coroutines)
+    testImplementation(libs.kotlin.test.junit5)
+    androidTestImplementation(libs.androidx.rules)
+    androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.ui.test.junit4)
     implementation(libs.retrofit.serialization.converter)
 }

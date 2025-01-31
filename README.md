@@ -64,3 +64,14 @@ interaction with the UI into a more readable format and extract hardcoded string
 
 - I planned to finish the task within the 3 hours and I think this is roughly the amount of time it
 took, may be slightly over it as I had to work in separate small time chunks.
+
+## Overview
+List Screen | Detail Screen | Walkthrough Video
+:-: | :-: | :-:
+<img width="300px" src="https://github.com/user-attachments/assets/2b8fe694-3ee3-4811-8e59-6a55d9344690"/> | <img width="300px" src="https://github.com/user-attachments/assets/f94541b2-8f67-4ed3-ba75-de952decd419"/> | <video width="300px" src="https://github.com/user-attachments/assets/d5c78d12-509a-4cbb-8cb5-c857e42fef79"/>
+
+
+
+
+
+

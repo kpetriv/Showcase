@@ -11,6 +11,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -47,7 +48,7 @@ class ArtworkViewModelTest {
 
         val states = mutableListOf<ArtworkScreenState>()
 
-        val job = launch {
+        backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
             artworkViewModel().state.toList(states)
         }
         advanceUntilIdle()
@@ -58,7 +59,6 @@ class ArtworkViewModelTest {
             ),
             actual = states
         )
-        job.cancel()
     }
 
     @Test
@@ -67,7 +67,7 @@ class ArtworkViewModelTest {
 
         val states = mutableListOf<ArtworkScreenState>()
 
-        val job = launch {
+        backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
             artworkViewModel().state.toList(states)
         }
         advanceUntilIdle()
@@ -79,6 +79,5 @@ class ArtworkViewModelTest {
             ),
             actual = states
         )
-        job.cancel()
     }
 }

@@ -4,7 +4,7 @@ import android.text.Html
 import android.text.Spanned
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
-import com.kirilpetriv.showcase.core.Artwork
+import com.kirilpetriv.showcase.models.Artwork
 
 // Simplified version of the helper methods
 

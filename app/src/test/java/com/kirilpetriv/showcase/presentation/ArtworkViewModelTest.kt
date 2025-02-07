@@ -1,13 +1,15 @@
 package com.kirilpetriv.showcase.presentation
 
 import com.kirilpetriv.showcase.core.ArtworkRepository
-import com.kirilpetriv.showcase.core.NetworkError
+import com.kirilpetriv.showcase.models.NetworkError
+import com.kirilpetriv.showcase.models.Resource
 import com.kirilpetriv.showcase.templates.artworkModelTemplate
 import io.mockk.clearAllMocks
-import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -44,7 +46,9 @@ class ArtworkViewModelTest {
 
     @Test
     fun `with successful result returns result state`() = runTest {
-        coEvery { artworkRepository.getArtworks() } returns listOf(artworkModelTemplate)
+        every { artworkRepository.getArtworks() } returns flowOf(
+            Resource.Success(listOf(artworkModelTemplate))
+        )
 
         val states = mutableListOf<ArtworkScreenState>()
 
@@ -63,7 +67,9 @@ class ArtworkViewModelTest {
 
     @Test
     fun `with error returns error screen state`() = runTest {
-        coEvery { artworkRepository.getArtworks() } throws NetworkError(message = "Network Error")
+        every { artworkRepository.getArtworks() } returns flowOf(
+            Resource.Failure(NetworkError(message = "Network Error"))
+        )
 
         val states = mutableListOf<ArtworkScreenState>()
 

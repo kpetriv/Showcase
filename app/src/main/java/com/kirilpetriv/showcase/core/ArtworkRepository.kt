@@ -1,9 +1,12 @@
 package com.kirilpetriv.showcase.core
 
+import com.kirilpetriv.showcase.models.Artwork
+import com.kirilpetriv.showcase.models.Resource
+import kotlinx.coroutines.flow.Flow
+
 interface ArtworkRepository {
     /**
-     * @return a list of [Artwork] objects.
-     * @throws Exception if an error occurs while fetching the data.
+     * @return Flow of a Result of a list of [Artwork] objects.
      */
-    suspend fun getArtworks(): List<Artwork>
+    fun getArtworks(): Flow<Resource<List<Artwork>>>
 }

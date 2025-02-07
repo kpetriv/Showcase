@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.core
+package com.kirilpetriv.showcase.models
 
 data class Artwork(
     val id: Long,

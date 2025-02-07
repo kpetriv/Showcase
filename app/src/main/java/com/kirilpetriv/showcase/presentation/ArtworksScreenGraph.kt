@@ -36,7 +36,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import coil.compose.AsyncImage
-import com.kirilpetriv.showcase.core.Artwork
+import com.kirilpetriv.showcase.models.Artwork
 import kotlinx.serialization.Serializable
 import org.koin.androidx.compose.koinViewModel
 
@@ -79,133 +79,6 @@ internal fun NavGraphBuilder.artworksScreenGraph(
                     .padding(horizontal = 16.dp)
                     .fillMaxSize()
             )
-        }
-    }
-}
-
-// Assume it's fine to use ExperimentalMaterial3Api in this case for the TopAppBar
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-internal fun ArtworkDetailScreen(
-    description: String,
-    imageUrl: String?,
-    onBack: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { },
-                navigationIcon = {
-                    IconButton(
-                        onClick = onBack,
-                        modifier = Modifier.testTag("back_button")
-                    ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                            contentDescription = "Back"
-                        )
-                    }
-                }
-            )
-        },
-        modifier = modifier.statusBarsPadding(),
-    ) { innerPadding ->
-        Column(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .verticalScroll(rememberScrollState()),
-        ) {
-            AsyncImage(
-                model = imageUrl,
-                contentDescription = "Artwork image",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .testTag("artwork_image")
-            )
-
-            Text(
-                text = getFormattedDescription(description),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .testTag("artwork_description")
-            )
-        }
-    }
-}
-
-@Composable
-private fun ArtworkListScreen(
-    // Description and imageUrl. In that order
-    onArtworkItem: (String, String?) -> Unit,
-    mainViewModel: ArtworksViewModel = koinViewModel(),
-    modifier: Modifier = Modifier,
-) {
-    val state = mainViewModel.state.collectAsState().value
-    Scaffold(modifier = modifier) { innerPadding ->
-        when (state) {
-            // Not handling error state here. With the errors caught in the VM, we can differentiate
-            // errors and provide multiple variations of the error screen with retry buttons or
-            // whatever configuration is needed
-            is ArtworkScreenState.Error -> Unit
-            // Loading spinner or shimmer here. Not adding in this case as I assume the load time
-            // is non-existent and the user won't be able to see the loading state
-            ArtworkScreenState.Loading -> Unit
-            is ArtworkScreenState.Success -> ArtworkResults(
-                innerPadding = innerPadding,
-                artworks = state.artworks,
-                onArtwork = onArtworkItem
-            )
-        }
-    }
-}
-
-@Composable
-private fun ArtworkResults(
-    innerPadding: PaddingValues,
-    artworks: List<Artwork>,
-    // Description and imageUrl. In that order
-    onArtwork: (String, String?) -> Unit,
-) {
-    LazyColumn(
-        modifier = Modifier
-            .padding(innerPadding)
-            .statusBarsPadding()
-            .testTag("artwork_list"),
-        contentPadding = PaddingValues(vertical = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(artworks) { item ->
-            Card(
-                onClick = { onArtwork(item.description, item.getMainImageUrl()) },
-                modifier = Modifier.fillMaxWidth().testTag("artwork_card")
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(16.dp)
-                ) {
-                    item.imageUuid?.let {
-                        AsyncImage(
-                            model = item.getThumbnailImageUrl(),
-                            contentDescription = "Artwork thumbnail",
-                            modifier = Modifier
-                                .size(75.dp)
-                                .testTag("artwork_thumbnail")
-                        )
-                    }
-                    Column {
-                        Text(
-                            text = item.title,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.testTag("artwork_title")
-                        )
-                        Text(text = item.artist, modifier = Modifier.testTag("artwork_artist"))
-                    }
-                }
-            }
         }
     }
 }

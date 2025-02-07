@@ -1,7 +1,7 @@
 package com.kirilpetriv.showcase.templates
 
 import com.kirilpetriv.showcase.network.Artwork as ArtworkDto
-import com.kirilpetriv.showcase.core.Artwork as ArtworkModel
+import com.kirilpetriv.showcase.models.Artwork as ArtworkModel
 
 val artworkModelTemplate: ArtworkModel
     get() = ArtworkModel(

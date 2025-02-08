@@ -28,7 +28,7 @@ class ArtworkDetailViewModelTest {
     private val artworkRepository: ArtworkRepository = mockk()
     private val testDispatcher = StandardTestDispatcher()
 
-    private fun artworkViewModel(id: Long) = ArtworksDetailViewModel(
+    private fun artworkViewModel(id: Long = 123) = ArtworksDetailViewModel(
         repository = artworkRepository,
         id = id
     )
@@ -54,7 +54,7 @@ class ArtworkDetailViewModelTest {
         val states = mutableListOf<ArtworkDetailScreenState>()
 
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
-            artworkViewModel(123).state.toList(states)
+            artworkViewModel().state.toList(states)
         }
         advanceUntilIdle()
         assertEquals(
@@ -75,7 +75,7 @@ class ArtworkDetailViewModelTest {
         val states = mutableListOf<ArtworkDetailScreenState>()
 
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
-            artworkViewModel(123).state.toList(states)
+            artworkViewModel().state.toList(states)
         }
         advanceUntilIdle()
 

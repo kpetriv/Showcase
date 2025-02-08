@@ -24,12 +24,13 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class ArtworkViewModelTest {
+class ArtworkDetailViewModelTest {
     private val artworkRepository: ArtworkRepository = mockk()
     private val testDispatcher = StandardTestDispatcher()
 
-    private fun artworkViewModel() = ArtworksListViewModel(
+    private fun artworkViewModel(id: Long) = ArtworksDetailViewModel(
         repository = artworkRepository,
+        id = id
     )
 
     @BeforeEach
@@ -46,20 +47,20 @@ class ArtworkViewModelTest {
 
     @Test
     fun `with successful result returns result state`() = runTest {
-        every { artworkRepository.getArtworks() } returns flowOf(
-            Resource.Success(listOf(artworkModelTemplate))
+        every { artworkRepository.getArtwork(any()) } returns flowOf(
+            Resource.Success(artworkModelTemplate)
         )
 
-        val states = mutableListOf<ArtworkListScreenState>()
+        val states = mutableListOf<ArtworkDetailScreenState>()
 
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
-            artworkViewModel().state.toList(states)
+            artworkViewModel(123).state.toList(states)
         }
         advanceUntilIdle()
         assertEquals(
             expected = listOf(
-                ArtworkListScreenState.Loading,
-                ArtworkListScreenState.Success(listOf(artworkModelTemplate))
+                ArtworkDetailScreenState.Loading,
+                ArtworkDetailScreenState.Success(artworkModelTemplate)
             ),
             actual = states
         )
@@ -67,21 +68,21 @@ class ArtworkViewModelTest {
 
     @Test
     fun `with error returns error screen state`() = runTest {
-        every { artworkRepository.getArtworks() } returns flowOf(
+        every { artworkRepository.getArtwork(any()) } returns flowOf(
             Resource.Failure(NetworkError(message = "Network Error"))
         )
 
-        val states = mutableListOf<ArtworkListScreenState>()
+        val states = mutableListOf<ArtworkDetailScreenState>()
 
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
-            artworkViewModel().state.toList(states)
+            artworkViewModel(123).state.toList(states)
         }
         advanceUntilIdle()
 
         assertEquals(
             expected = listOf(
-                ArtworkListScreenState.Loading,
-                ArtworkListScreenState.Error("Network Error")
+                ArtworkDetailScreenState.Loading,
+                ArtworkDetailScreenState.Error("Network Error")
             ),
             actual = states
         )

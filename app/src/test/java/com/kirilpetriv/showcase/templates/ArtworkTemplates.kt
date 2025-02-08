@@ -1,6 +1,6 @@
 package com.kirilpetriv.showcase.templates
 
-import com.kirilpetriv.showcase.network.Artwork as ArtworkDto
+import com.kirilpetriv.showcase.network.ArtworkDto as ArtworkDto
 import com.kirilpetriv.showcase.models.Artwork as ArtworkModel
 
 val artworkModelTemplate: ArtworkModel

@@ -9,7 +9,7 @@ data class Page<T>(
 )
 
 @Serializable
-data class Artwork(
+data class ArtworkDto(
     @SerialName("id")
     val id: Long,
     @SerialName("title")

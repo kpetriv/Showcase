@@ -1,7 +1,7 @@
-package com.kirilpetriv.showcase.network
+package com.kirilpetriv.showcase.data
 
+import com.kirilpetriv.showcase.network.ArtworkDto
 import com.kirilpetriv.showcase.models.Artwork as ArtworkModel
-import com.kirilpetriv.showcase.network.Artwork as ArtworkDto
 
 internal fun ArtworkDto.toModel() = ArtworkModel(
     id = id,

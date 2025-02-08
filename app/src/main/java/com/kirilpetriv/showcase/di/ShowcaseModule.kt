@@ -2,7 +2,7 @@ package com.kirilpetriv.showcase.di
 
 import com.kirilpetriv.showcase.network.ArtworkService
 import com.kirilpetriv.showcase.core.ArtworkRepository
-import com.kirilpetriv.showcase.network.ArtworkRepositoryImpl
+import com.kirilpetriv.showcase.data.ArtworkRepositoryImpl
 import com.kirilpetriv.showcase.presentation.ArtworksViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module

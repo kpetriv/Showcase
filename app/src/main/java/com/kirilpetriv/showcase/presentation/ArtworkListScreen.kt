@@ -24,9 +24,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.kirilpetriv.showcase.R
 import com.kirilpetriv.showcase.models.Artwork
 import com.kirilpetriv.showcase.presentation.basecomposables.ErrorView
 import com.kirilpetriv.showcase.presentation.basecomposables.LoadingIndicatorScreen
@@ -87,15 +89,14 @@ private fun ArtworkResults(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.padding(16.dp)
                 ) {
-                    item.imageUuid?.let {
-                        AsyncImage(
-                            model = item.getThumbnailImageUrl(),
-                            contentDescription = "Artwork thumbnail",
-                            modifier = Modifier
-                                .size(75.dp)
-                                .testTag("artwork_thumbnail")
-                        )
-                    }
+                    AsyncImage(
+                        model = item.getThumbnailImageUrl(),
+                        contentDescription = "Artwork thumbnail",
+                        error = painterResource(R.drawable.img_no_image),
+                        modifier = Modifier
+                            .size(75.dp)
+                            .testTag("artwork_thumbnail")
+                    )
                     Column {
                         Text(
                             text = item.title,

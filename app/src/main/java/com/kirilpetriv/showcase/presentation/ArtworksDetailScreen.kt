@@ -19,8 +19,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.kirilpetriv.showcase.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,6 +61,7 @@ internal fun ArtworkDetailScreen(
             AsyncImage(
                 model = imageUrl,
                 contentDescription = "Artwork image",
+                error = painterResource(R.drawable.img_no_image),
                 modifier = Modifier
                     .fillMaxWidth()
                     .testTag("artwork_image")

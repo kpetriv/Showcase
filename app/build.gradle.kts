@@ -80,4 +80,8 @@ dependencies {
     androidTestImplementation(libs.androidx.runner)
     androidTestImplementation(libs.ui.test.junit4)
     implementation(libs.retrofit.serialization.converter)
+
+    implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.ktx)
+    testImplementation(libs.androidx.paging.testing)
 }

@@ -16,8 +16,8 @@ interface ArtworkService {
     suspend fun getArtworks(
         @Query("fields") fields: String = "id,title,artist_display,image_id,description",
         @Query("page") page: Int = 1,
-        @Query("limit") limit: Int = 50,
-    ): Page<Artwork>
+        @Query("limit") limit: Int = 20,
+    ): Page<ArtworkDto>
 
     companion object {
         fun provide(): ArtworkService {

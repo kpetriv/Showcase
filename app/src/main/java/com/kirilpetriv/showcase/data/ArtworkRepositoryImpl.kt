@@ -1,10 +1,17 @@
-package com.kirilpetriv.showcase.network
+package com.kirilpetriv.showcase.data
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.kirilpetriv.showcase.core.ArtworkRepository
+import com.kirilpetriv.showcase.models.Artwork
 import com.kirilpetriv.showcase.models.Resource
+import com.kirilpetriv.showcase.network.ArtworkPagingSource
+import com.kirilpetriv.showcase.network.ArtworkService
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
@@ -25,4 +32,15 @@ class ArtworkRepositoryImpl(
             emit(Resource.Failure(it))
         }
     }.flowOn(dispatcher)
+
+    override fun getPaged(): Flow<PagingData<Artwork>> {
+        return Pager(
+            config = PagingConfig(
+                initialLoadSize = 20,
+                pageSize = 20,
+                enablePlaceholders = true
+            ),
+            pagingSourceFactory = { ArtworkPagingSource(service = artworkService) }
+        ).flow.flowOn(dispatcher)
+    }
 }

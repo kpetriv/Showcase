@@ -7,11 +7,11 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.0"
-composeBom = "2025.01.00"
+composeBom = "2025.01.01"
 kotlin-serialization = "1.6.1"
 retrofit = "2.11.0"
 koin-bom = "4.0.0"
-navigationCompose = "2.8.5"
+navigationCompose = "2.8.6"
 coil = "2.6.0"
 mockk = "1.13.7"
 kotlin-coroutines = "1.7.3"
@@ -19,6 +19,8 @@ retrofit-kotlin-serialization = "1.0.0"
 rules = "1.6.1"
 runner = "1.6.2"
 uiTestJunit4 = "1.7.7"
+androidx-paging = "3.3.5"
+androidx-paging-compose = "3.3.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,6 +37,9 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-paging-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "androidx-paging" }
+androidx-paging-testing = { module = "androidx.paging:paging-testing", version.ref = "androidx-paging" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "androidx-paging-compose" }
 
 # Network
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }

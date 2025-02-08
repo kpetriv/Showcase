@@ -19,19 +19,6 @@ class ArtworkRepositoryImpl(
     private val artworkService: ArtworkService,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ArtworkRepository {
-    override fun getArtworks() = flow {
-        emit(Resource.Loading)
-        runCatching {
-            artworkService.getArtworks()
-        }.onSuccess { result ->
-            emit(Resource.Success(result.data.map { it.toModel() }))
-        }.onFailure {
-            if (it is CancellationException) {
-                throw it
-            }
-            emit(Resource.Failure(it))
-        }
-    }.flowOn(dispatcher)
 
     override fun getPaged(): Flow<PagingData<Artwork>> {
         return Pager(
@@ -43,4 +30,18 @@ class ArtworkRepositoryImpl(
             pagingSourceFactory = { ArtworkPagingSource(service = artworkService) }
         ).flow.flowOn(dispatcher)
     }
+
+    override fun getArtwork(id: Long) = flow {
+        emit(Resource.Loading)
+        runCatching {
+            artworkService.getArtwork(id = id)
+        }.onSuccess { result ->
+            emit(Resource.Success(result.data.toModel()))
+        }.onFailure {
+            if (it is CancellationException) {
+                throw it
+            }
+            emit(Resource.Failure(it))
+        }
+    }.flowOn(dispatcher)
 }

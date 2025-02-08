@@ -28,7 +28,7 @@ class ArtworkViewModelTest {
     private val artworkRepository: ArtworkRepository = mockk()
     private val testDispatcher = StandardTestDispatcher()
 
-    private fun artworkViewModel() = ArtworksViewModel(
+    private fun artworkViewModel() = ArtworksListViewModel(
         repository = artworkRepository,
     )
 
@@ -50,7 +50,7 @@ class ArtworkViewModelTest {
             Resource.Success(listOf(artworkModelTemplate))
         )
 
-        val states = mutableListOf<ArtworkScreenState>()
+        val states = mutableListOf<ArtworkListScreenState>()
 
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
             artworkViewModel().state.toList(states)
@@ -58,8 +58,8 @@ class ArtworkViewModelTest {
         advanceUntilIdle()
         assertEquals(
             expected = listOf(
-                ArtworkScreenState.Loading,
-                ArtworkScreenState.Success(listOf(artworkModelTemplate))
+                ArtworkListScreenState.Loading,
+                ArtworkListScreenState.Success(listOf(artworkModelTemplate))
             ),
             actual = states
         )
@@ -71,7 +71,7 @@ class ArtworkViewModelTest {
             Resource.Failure(NetworkError(message = "Network Error"))
         )
 
-        val states = mutableListOf<ArtworkScreenState>()
+        val states = mutableListOf<ArtworkListScreenState>()
 
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
             artworkViewModel().state.toList(states)
@@ -80,8 +80,8 @@ class ArtworkViewModelTest {
 
         assertEquals(
             expected = listOf(
-                ArtworkScreenState.Loading,
-                ArtworkScreenState.Error("Network Error")
+                ArtworkListScreenState.Loading,
+                ArtworkListScreenState.Error("Network Error")
             ),
             actual = states
         )

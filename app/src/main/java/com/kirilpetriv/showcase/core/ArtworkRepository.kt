@@ -6,10 +6,7 @@ import com.kirilpetriv.showcase.models.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface ArtworkRepository {
-    /**
-     * @return Flow of a Result of a list of [Artwork] objects.
-     */
-    fun getArtworks(): Flow<Resource<List<Artwork>>>
-
     fun getPaged(): Flow<PagingData<Artwork>>
+
+    fun getArtwork(id: Long): Flow<Resource<Artwork>>
 }

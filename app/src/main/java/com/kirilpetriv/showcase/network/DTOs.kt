@@ -9,6 +9,11 @@ data class Page<T>(
 )
 
 @Serializable
+data class Result<T>(
+    val data: T,
+)
+
+@Serializable
 data class ArtworkDto(
     @SerialName("id")
     val id: Long,

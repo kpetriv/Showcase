@@ -1,5 +1,6 @@
 package com.kirilpetriv.showcase.network
 
+import com.kirilpetriv.showcase.data.ArtworkRepositoryImpl
 import com.kirilpetriv.showcase.models.Artwork
 import com.kirilpetriv.showcase.models.NetworkError
 import com.kirilpetriv.showcase.models.Resource
@@ -13,6 +14,7 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestCoroutineScheduler
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -30,40 +32,43 @@ class ArtworkRepositoryImplTest {
         clearAllMocks()
     }
 
-    @Test
-    fun `with successful request properly return a converted model`() = runTest {
-        coEvery {
-            artworkService.getArtworks(any(), any(), any())
-        } returns Page(
-            data = listOf(artworkDtoTemplate),
-        )
+    @Nested
+    inner class GetArtwork {
+        @Test
+        fun `with successful request properly return a converted model`() = runTest {
+            coEvery {
+                artworkService.getArtwork(any())
+            } returns Result(
+                data = artworkDtoTemplate,
+            )
 
-        val emits = mutableListOf<Resource<List<Artwork>>>()
-        artworkRepository(testScheduler).getArtworks().toList(emits)
+            val emits = mutableListOf<Resource<Artwork>>()
+            artworkRepository(testScheduler).getArtwork(id = 123).toList(emits)
 
-        assertEquals(
-            expected = listOf(
-                Resource.Loading,
-                Resource.Success(listOf(artworkModelTemplate))
-            ),
-            actual = emits
-        )
-    }
+            assertEquals(
+                expected = listOf(
+                    Resource.Loading,
+                    Resource.Success(artworkModelTemplate)
+                ),
+                actual = emits
+            )
+        }
 
-    @Test
-    fun `with error properly propagates the error`() = runTest {
-        val error = NetworkError()
-        coEvery { artworkService.getArtworks() } throws error
+        @Test
+        fun `with error properly propagates the error`() = runTest {
+            val error = NetworkError()
+            coEvery { artworkService.getArtwork(any()) } throws error
 
-        val emits = mutableListOf<Resource<List<Artwork>>>()
-        artworkRepository(testScheduler).getArtworks().toList(emits)
+            val emits = mutableListOf<Resource<Artwork>>()
+            artworkRepository(testScheduler).getArtwork(123).toList(emits)
 
-        assertEquals(
-            expected = listOf(
-                Resource.Loading,
-                Resource.Failure(error),
-            ) as List<Resource<List<Artwork>>>,
-            actual = emits
-        )
+            assertEquals(
+                expected = listOf(
+                    Resource.Loading,
+                    Resource.Failure(error),
+                ) as List<Resource<Artwork>>,
+                actual = emits
+            )
+        }
     }
 }

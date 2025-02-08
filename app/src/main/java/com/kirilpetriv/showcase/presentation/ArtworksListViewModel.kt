@@ -6,7 +6,7 @@ import androidx.paging.cachedIn
 import com.kirilpetriv.showcase.core.ArtworkRepository
 
 class ArtworksListViewModel(
-    private val repository: ArtworkRepository
+    repository: ArtworkRepository
 ) : ViewModel() {
     val artworks = repository.getPaged().cachedIn(viewModelScope)
 }

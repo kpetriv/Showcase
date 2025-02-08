@@ -6,6 +6,7 @@ import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.artic.edu/api/v1/"
@@ -18,6 +19,11 @@ interface ArtworkService {
         @Query("page") page: Int = 1,
         @Query("limit") limit: Int = 20,
     ): Page<ArtworkDto>
+
+    @GET("artworks/{id}")
+    suspend fun getArtwork(
+        @Path("id") id: Long,
+    ): Result<ArtworkDto>
 
     companion object {
         fun provide(): ArtworkService {

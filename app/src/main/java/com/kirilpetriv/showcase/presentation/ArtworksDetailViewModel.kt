@@ -9,26 +9,27 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class ArtworksViewModel(
+class ArtworksDetailViewModel(
+    private val id: Long,
     private val repository: ArtworkRepository
 ) : ViewModel() {
-    private val _state: MutableStateFlow<ArtworkScreenState> =
-        MutableStateFlow(ArtworkScreenState.Loading)
+
+    private val _state =
+        MutableStateFlow<ArtworkDetailScreenState>(ArtworkDetailScreenState.Loading)
     val state = _state.asStateFlow()
 
     init {
-        getArtworks()
+        loadArtwork()
     }
 
-    fun getArtworks() {
+    fun loadArtwork() {
         viewModelScope.launch {
-            repository.getArtworks().collect { result ->
+            repository.getArtwork(id = id).collect { result ->
                 _state.update {
                     when (result) {
-                        Resource.Loading -> ArtworkScreenState.Loading
-                        is Resource.Failure -> ArtworkScreenState.Error(result.error.message)
-                        is Resource.Success -> ArtworkScreenState.Success(result.value)
-
+                        Resource.Loading -> ArtworkDetailScreenState.Loading
+                        is Resource.Failure -> ArtworkDetailScreenState.Error(result.error.message)
+                        is Resource.Success -> ArtworkDetailScreenState.Success(result.value)
                     }
                 }
             }

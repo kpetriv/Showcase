@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.presentation.basecomposables
+package com.kirilpetriv.showcase.commonUi
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.CircularProgressIndicator

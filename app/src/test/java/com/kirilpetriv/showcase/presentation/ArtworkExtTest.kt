@@ -1,5 +1,7 @@
 package com.kirilpetriv.showcase.presentation
 
+import com.kirilpetriv.showcase.feature.artwork.getMainImageUrl
+import com.kirilpetriv.showcase.feature.artwork.getThumbnailImageUrl
 import com.kirilpetriv.showcase.templates.artworkModelTemplate
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals

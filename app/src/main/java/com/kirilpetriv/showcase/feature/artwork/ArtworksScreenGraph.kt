@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.presentation
+package com.kirilpetriv.showcase.feature.artwork
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier

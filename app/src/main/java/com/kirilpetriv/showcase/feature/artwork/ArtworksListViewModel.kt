@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.presentation
+package com.kirilpetriv.showcase.feature.artwork
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

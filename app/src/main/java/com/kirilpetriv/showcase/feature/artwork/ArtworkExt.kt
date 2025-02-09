@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.presentation
+package com.kirilpetriv.showcase.feature.artwork
 
 import android.text.Html
 import android.text.Spanned

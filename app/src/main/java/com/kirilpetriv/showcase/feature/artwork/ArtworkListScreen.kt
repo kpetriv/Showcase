@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.presentation
+package com.kirilpetriv.showcase.feature.artwork
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,8 +29,8 @@ import androidx.paging.compose.itemKey
 import coil.compose.AsyncImage
 import com.kirilpetriv.showcase.R
 import com.kirilpetriv.showcase.models.Artwork
-import com.kirilpetriv.showcase.presentation.basecomposables.LoadingIndicatorScreen
-import com.kirilpetriv.showcase.presentation.basecomposables.ScreenErrorView
+import com.kirilpetriv.showcase.commonUi.LoadingIndicatorScreen
+import com.kirilpetriv.showcase.commonUi.ScreenErrorView
 import org.koin.androidx.compose.koinViewModel
 
 

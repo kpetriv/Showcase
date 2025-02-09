@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.presentation.basecomposables
+package com.kirilpetriv.showcase.commonUi
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth

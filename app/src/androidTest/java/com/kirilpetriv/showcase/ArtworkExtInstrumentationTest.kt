@@ -1,7 +1,7 @@
 package com.kirilpetriv.showcase
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.kirilpetriv.showcase.presentation.getFormattedDescription
+import com.kirilpetriv.showcase.feature.artwork.getFormattedDescription
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

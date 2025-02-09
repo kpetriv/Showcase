@@ -82,6 +82,7 @@ dependencies {
 
     implementation(libs.androidx.paging.compose)
 
-    implementation(project(":network"))
     implementation(project(":model"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
 }

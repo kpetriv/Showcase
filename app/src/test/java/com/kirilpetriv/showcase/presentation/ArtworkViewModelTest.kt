@@ -1,6 +1,6 @@
 package com.kirilpetriv.showcase.presentation
 
-import com.kirilpetriv.showcase.core.ArtworkRepository
+import com.kirilpetriv.domain.repository.ArtworkRepository
 import com.kirilpetriv.showcase.feature.artwork.ArtworkDetailScreenState
 import com.kirilpetriv.showcase.feature.artwork.ArtworksDetailViewModel
 import com.kirilpetriv.model.NetworkError

@@ -3,7 +3,6 @@ package com.kirilpetriv.network
 import com.kirilpetriv.network.dto.ArtworkDto
 import com.kirilpetriv.network.dto.Result
 import kotlinx.serialization.json.Json
-
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 

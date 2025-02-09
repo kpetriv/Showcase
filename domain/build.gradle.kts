@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.kirilpetriv.network"
+    namespace = "com.kirilpetriv.domain"
     compileSdk = 35
 
     defaultConfig {
@@ -33,32 +32,15 @@ android {
     }
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-    // Fix for transitive dependency issue with ByteBuddy
-    jvmArgs("-Dnet.bytebuddy.experimental=true")
-}
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
-    testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation(platform(libs.koin.bom))
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
-    implementation(libs.kotlin.serialization)
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.serialization.converter)
-    implementation(platform(libs.okhttp.bom))
-    implementation(libs.okhttp)
-    implementation(libs.logging.interceptor)
-    testImplementation(libs.kotlin.test.junit5)
+    implementation(libs.androidx.paging.ktx)
 
     implementation(project(":model"))
 }

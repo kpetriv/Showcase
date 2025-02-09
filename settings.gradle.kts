@@ -23,3 +23,5 @@ rootProject.name = "Showcase"
 include(":app")
 include(":network")
 include(":model")
+include(":data")
+include(":domain")

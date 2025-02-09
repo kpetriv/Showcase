@@ -3,7 +3,7 @@ package com.kirilpetriv.showcase.feature.artwork
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kirilpetriv.model.Resource
-import com.kirilpetriv.showcase.core.ArtworkRepository
+import com.kirilpetriv.domain.repository.ArtworkRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class ArtworksDetailViewModel(
     private val id: Long,
-    private val repository: ArtworkRepository
+    private val repository: com.kirilpetriv.domain.repository.ArtworkRepository
 ) : ViewModel() {
 
     private val _state =

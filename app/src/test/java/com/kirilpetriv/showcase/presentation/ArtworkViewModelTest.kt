@@ -3,8 +3,8 @@ package com.kirilpetriv.showcase.presentation
 import com.kirilpetriv.showcase.core.ArtworkRepository
 import com.kirilpetriv.showcase.feature.artwork.ArtworkDetailScreenState
 import com.kirilpetriv.showcase.feature.artwork.ArtworksDetailViewModel
-import com.kirilpetriv.showcase.models.NetworkError
-import com.kirilpetriv.showcase.models.Resource
+import com.kirilpetriv.model.NetworkError
+import com.kirilpetriv.model.Resource
 import com.kirilpetriv.showcase.templates.artworkModelTemplate
 import io.mockk.clearAllMocks
 import io.mockk.every
@@ -50,7 +50,7 @@ class ArtworkDetailViewModelTest {
     @Test
     fun `with successful result returns result state`() = runTest {
         every { artworkRepository.getArtwork(any()) } returns flowOf(
-            Resource.Success(artworkModelTemplate)
+            com.kirilpetriv.model.Resource.Success(artworkModelTemplate)
         )
 
         val states = mutableListOf<ArtworkDetailScreenState>()
@@ -71,7 +71,7 @@ class ArtworkDetailViewModelTest {
     @Test
     fun `with error returns error screen state`() = runTest {
         every { artworkRepository.getArtwork(any()) } returns flowOf(
-            Resource.Failure(NetworkError(message = "Network Error"))
+            com.kirilpetriv.model.Resource.Failure(com.kirilpetriv.model.NetworkError(message = "Network Error"))
         )
 
         val states = mutableListOf<ArtworkDetailScreenState>()

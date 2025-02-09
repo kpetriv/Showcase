@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.network
+package com.kirilpetriv.showcase.data
 
 import com.kirilpetriv.showcase.data.toModel
 import com.kirilpetriv.showcase.templates.artworkDtoTemplate

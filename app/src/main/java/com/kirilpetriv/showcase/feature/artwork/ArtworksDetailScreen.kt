@@ -25,7 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.kirilpetriv.showcase.R
-import com.kirilpetriv.showcase.models.Artwork
+import com.kirilpetriv.model.Artwork
 import com.kirilpetriv.showcase.commonUi.LoadingIndicatorScreen
 import com.kirilpetriv.showcase.commonUi.ScreenErrorView
 import org.koin.androidx.compose.koinViewModel
@@ -92,7 +92,7 @@ internal fun ArtworkDetailScreen(
 
 @Composable
 private fun ArtworkDetailContent(
-    artwork: Artwork,
+    artwork: com.kirilpetriv.model.Artwork,
     modifier: Modifier = Modifier,
 ) {
     Column(

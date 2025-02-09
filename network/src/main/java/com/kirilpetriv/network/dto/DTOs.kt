@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.network
+package com.kirilpetriv.network.dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

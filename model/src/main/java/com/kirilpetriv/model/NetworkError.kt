@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.models
+package com.kirilpetriv.model
 
 import java.io.IOException
 

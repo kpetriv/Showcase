@@ -28,7 +28,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import coil.compose.AsyncImage
 import com.kirilpetriv.showcase.R
-import com.kirilpetriv.showcase.models.Artwork
+import com.kirilpetriv.model.Artwork
 import com.kirilpetriv.showcase.commonUi.LoadingIndicatorScreen
 import com.kirilpetriv.showcase.commonUi.ScreenErrorView
 import org.koin.androidx.compose.koinViewModel
@@ -76,7 +76,7 @@ internal fun ArtworkListScreen(
 @Composable
 private fun ArtworkResults(
     innerPadding: PaddingValues,
-    artworks: LazyPagingItems<Artwork>,
+    artworks: LazyPagingItems<com.kirilpetriv.model.Artwork>,
     onArtwork: (Long) -> Unit,
 ) {
     LazyColumn(

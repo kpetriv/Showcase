@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.models
+package com.kirilpetriv.model
 
 sealed class Resource<out T> {
     data class Success<T>(val value: T) : Resource<T>()

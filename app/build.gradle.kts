@@ -65,7 +65,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.retrofit.core)
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
     implementation(libs.koin.android)
@@ -80,9 +79,9 @@ dependencies {
     androidTestImplementation(libs.androidx.rules)
     androidTestImplementation(libs.androidx.runner)
     androidTestImplementation(libs.ui.test.junit4)
-    implementation(libs.retrofit.serialization.converter)
 
     implementation(libs.androidx.paging.compose)
-    implementation(libs.androidx.paging.ktx)
-    testImplementation(libs.androidx.paging.testing)
+
+    implementation(project(":network"))
+    implementation(project(":model"))
 }

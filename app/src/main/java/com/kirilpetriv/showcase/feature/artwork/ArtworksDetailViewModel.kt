@@ -3,7 +3,7 @@ package com.kirilpetriv.showcase.feature.artwork
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kirilpetriv.showcase.core.ArtworkRepository
-import com.kirilpetriv.showcase.models.Resource
+import com.kirilpetriv.model.Resource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -27,9 +27,9 @@ class ArtworksDetailViewModel(
             repository.getArtwork(id = id).collect { result ->
                 _state.update {
                     when (result) {
-                        Resource.Loading -> ArtworkDetailScreenState.Loading
-                        is Resource.Failure -> ArtworkDetailScreenState.Error(result.error.message)
-                        is Resource.Success -> ArtworkDetailScreenState.Success(result.value)
+                        com.kirilpetriv.model.Resource.Loading -> ArtworkDetailScreenState.Loading
+                        is com.kirilpetriv.model.Resource.Failure -> ArtworkDetailScreenState.Error(result.error.message)
+                        is com.kirilpetriv.model.Resource.Success -> ArtworkDetailScreenState.Success(result.value)
                     }
                 }
             }

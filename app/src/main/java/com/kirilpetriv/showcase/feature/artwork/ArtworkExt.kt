@@ -4,15 +4,15 @@ import android.text.Html
 import android.text.Spanned
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
-import com.kirilpetriv.showcase.models.Artwork
+import com.kirilpetriv.model.Artwork
 
 // Simplified version of the helper methods
 
-internal fun Artwork.getMainImageUrl(): String {
+internal fun com.kirilpetriv.model.Artwork.getMainImageUrl(): String {
     return "https://www.artic.edu/iiif/2/${imageUuid}/full/843,/0/default.jpg"
 }
 
-internal fun Artwork.getThumbnailImageUrl(): String {
+internal fun com.kirilpetriv.model.Artwork.getThumbnailImageUrl(): String {
     return "https://www.artic.edu/iiif/2/${imageUuid}/full/100,/0/default.jpg"
 }
 

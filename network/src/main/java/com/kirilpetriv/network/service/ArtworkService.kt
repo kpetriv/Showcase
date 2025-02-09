@@ -1,6 +1,9 @@
-package com.kirilpetriv.showcase.network
+package com.kirilpetriv.network.service
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.kirilpetriv.network.dto.ArtworkDto
+import com.kirilpetriv.network.dto.Page
+import com.kirilpetriv.network.dto.Result
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType

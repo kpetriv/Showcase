@@ -1,9 +1,9 @@
-package com.kirilpetriv.showcase.network
+package com.kirilpetriv.showcase.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.kirilpetriv.showcase.data.toModel
-import com.kirilpetriv.showcase.models.Artwork
+import com.kirilpetriv.model.Artwork
+import com.kirilpetriv.network.service.ArtworkService
 
 /**
  * Paging source for fetching artworks.
@@ -29,5 +29,6 @@ class ArtworkPagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Artwork>): Int? = state.anchorPosition
+    override fun getRefreshKey(state: PagingState<Int, Artwork>): Int? =
+        state.anchorPosition
 }

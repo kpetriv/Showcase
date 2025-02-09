@@ -1,9 +1,10 @@
-package com.kirilpetriv.showcase.network
+package com.kirilpetriv.showcase.data
 
-import com.kirilpetriv.showcase.data.ArtworkRepositoryImpl
-import com.kirilpetriv.showcase.models.Artwork
-import com.kirilpetriv.showcase.models.NetworkError
-import com.kirilpetriv.showcase.models.Resource
+import com.kirilpetriv.network.dto.Result
+import com.kirilpetriv.model.Artwork
+import com.kirilpetriv.model.NetworkError
+import com.kirilpetriv.model.Resource
+import com.kirilpetriv.network.service.ArtworkService
 import com.kirilpetriv.showcase.templates.artworkDtoTemplate
 import com.kirilpetriv.showcase.templates.artworkModelTemplate
 import io.mockk.clearAllMocks
@@ -42,7 +43,8 @@ class ArtworkRepositoryImplTest {
                 data = artworkDtoTemplate,
             )
 
-            val emits = mutableListOf<Resource<Artwork>>()
+            val emits =
+                mutableListOf<Resource<Artwork>>()
             artworkRepository(testScheduler).getArtwork(id = 123).toList(emits)
 
             assertEquals(
@@ -59,7 +61,8 @@ class ArtworkRepositoryImplTest {
             val error = NetworkError()
             coEvery { artworkService.getArtwork(any()) } throws error
 
-            val emits = mutableListOf<Resource<Artwork>>()
+            val emits =
+                mutableListOf<Resource<Artwork>>()
             artworkRepository(testScheduler).getArtwork(123).toList(emits)
 
             assertEquals(

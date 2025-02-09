@@ -76,7 +76,7 @@ internal fun ArtworkListScreen(
 @Composable
 private fun ArtworkResults(
     innerPadding: PaddingValues,
-    artworks: LazyPagingItems<com.kirilpetriv.model.Artwork>,
+    artworks: LazyPagingItems<Artwork>,
     onArtwork: (Long) -> Unit,
 ) {
     LazyColumn(

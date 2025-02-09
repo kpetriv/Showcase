@@ -92,7 +92,7 @@ internal fun ArtworkDetailScreen(
 
 @Composable
 private fun ArtworkDetailContent(
-    artwork: com.kirilpetriv.model.Artwork,
+    artwork: Artwork,
     modifier: Modifier = Modifier,
 ) {
     Column(

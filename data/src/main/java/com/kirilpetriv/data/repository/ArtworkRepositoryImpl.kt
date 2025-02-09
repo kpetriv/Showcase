@@ -1,10 +1,14 @@
-package com.kirilpetriv.showcase.data
+package com.kirilpetriv.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.kirilpetriv.data.paging.ArtworkPagingSource
+import com.kirilpetriv.data.transformer.toModel
+import com.kirilpetriv.domain.repository.ArtworkRepository
+import com.kirilpetriv.model.Artwork
+import com.kirilpetriv.model.Resource
 import com.kirilpetriv.network.service.ArtworkService
-import com.kirilpetriv.showcase.core.ArtworkRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +21,7 @@ class ArtworkRepositoryImpl(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ArtworkRepository {
 
-    override fun getPaged(): Flow<PagingData<com.kirilpetriv.model.Artwork>> {
+    override fun getPaged(): Flow<PagingData<Artwork>> {
         return Pager(
             config = PagingConfig(
                 initialLoadSize = 20,
@@ -29,16 +33,16 @@ class ArtworkRepositoryImpl(
     }
 
     override fun getArtwork(id: Long) = flow {
-        emit(com.kirilpetriv.model.Resource.Loading)
+        emit(Resource.Loading)
         runCatching {
             artworkService.getArtwork(id = id)
         }.onSuccess { result ->
-            emit(com.kirilpetriv.model.Resource.Success(result.data.toModel()))
+            emit(Resource.Success(result.data.toModel()))
         }.onFailure {
             if (it is CancellationException) {
                 throw it
             }
-            emit(com.kirilpetriv.model.Resource.Failure(it))
+            emit(Resource.Failure(it))
         }
     }.flowOn(dispatcher)
 }

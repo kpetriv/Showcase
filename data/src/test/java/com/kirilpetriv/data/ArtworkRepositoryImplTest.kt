@@ -1,12 +1,13 @@
-package com.kirilpetriv.showcase.data
+package com.kirilpetriv.data
 
-import com.kirilpetriv.network.dto.Result
+import com.kirilpetriv.data.repository.ArtworkRepositoryImpl
+import com.kirilpetriv.data.templates.artworkDtoTemplate
+import com.kirilpetriv.data.templates.artworkModelTemplate
 import com.kirilpetriv.model.Artwork
 import com.kirilpetriv.model.NetworkError
 import com.kirilpetriv.model.Resource
+import com.kirilpetriv.network.dto.Result
 import com.kirilpetriv.network.service.ArtworkService
-import com.kirilpetriv.showcase.templates.artworkDtoTemplate
-import com.kirilpetriv.showcase.templates.artworkModelTemplate
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -23,10 +24,11 @@ class ArtworkRepositoryImplTest {
 
     private val artworkService: ArtworkService = mockk()
 
-    private fun artworkRepository(scheduler: TestCoroutineScheduler) = ArtworkRepositoryImpl(
-        artworkService = artworkService,
-        dispatcher = StandardTestDispatcher(scheduler = scheduler)
-    )
+    private fun artworkRepository(scheduler: TestCoroutineScheduler) =
+        ArtworkRepositoryImpl(
+            artworkService = artworkService,
+            dispatcher = StandardTestDispatcher(scheduler = scheduler)
+        )
 
     @BeforeEach
     fun init() {

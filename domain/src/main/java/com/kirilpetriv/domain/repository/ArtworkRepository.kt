@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.core
+package com.kirilpetriv.domain.repository
 
 import androidx.paging.PagingData
 import com.kirilpetriv.model.Artwork

@@ -1,7 +1,8 @@
-package com.kirilpetriv.showcase.data
+package com.kirilpetriv.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.kirilpetriv.data.transformer.toModel
 import com.kirilpetriv.model.Artwork
 import com.kirilpetriv.network.service.ArtworkService
 

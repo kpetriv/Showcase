@@ -1,7 +1,8 @@
-package com.kirilpetriv.showcase.data
+package com.kirilpetriv.data
 
-import com.kirilpetriv.showcase.templates.artworkDtoTemplate
-import com.kirilpetriv.showcase.templates.artworkModelTemplate
+import com.kirilpetriv.data.templates.artworkDtoTemplate
+import com.kirilpetriv.data.templates.artworkModelTemplate
+import com.kirilpetriv.data.transformer.toModel
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 

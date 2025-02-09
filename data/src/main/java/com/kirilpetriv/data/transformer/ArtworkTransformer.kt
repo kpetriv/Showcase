@@ -1,4 +1,4 @@
-package com.kirilpetriv.showcase.data
+package com.kirilpetriv.data.transformer
 
 import com.kirilpetriv.network.dto.ArtworkDto
 import com.kirilpetriv.model.Artwork as ArtworkModel

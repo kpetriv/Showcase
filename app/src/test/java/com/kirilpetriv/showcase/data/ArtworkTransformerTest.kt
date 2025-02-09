@@ -1,6 +1,5 @@
 package com.kirilpetriv.showcase.data
 
-import com.kirilpetriv.showcase.data.toModel
 import com.kirilpetriv.showcase.templates.artworkDtoTemplate
 import com.kirilpetriv.showcase.templates.artworkModelTemplate
 import org.junit.jupiter.api.Test

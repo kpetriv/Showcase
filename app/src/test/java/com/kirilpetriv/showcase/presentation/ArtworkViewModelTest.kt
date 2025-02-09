@@ -50,7 +50,7 @@ class ArtworkDetailViewModelTest {
     @Test
     fun `with successful result returns result state`() = runTest {
         every { artworkRepository.getArtwork(any()) } returns flowOf(
-            com.kirilpetriv.model.Resource.Success(artworkModelTemplate)
+            Resource.Success(artworkModelTemplate)
         )
 
         val states = mutableListOf<ArtworkDetailScreenState>()
@@ -71,7 +71,7 @@ class ArtworkDetailViewModelTest {
     @Test
     fun `with error returns error screen state`() = runTest {
         every { artworkRepository.getArtwork(any()) } returns flowOf(
-            com.kirilpetriv.model.Resource.Failure(com.kirilpetriv.model.NetworkError(message = "Network Error"))
+            Resource.Failure(NetworkError(message = "Network Error"))
         )
 
         val states = mutableListOf<ArtworkDetailScreenState>()

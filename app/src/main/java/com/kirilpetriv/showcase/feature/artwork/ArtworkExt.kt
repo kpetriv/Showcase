@@ -8,11 +8,11 @@ import com.kirilpetriv.model.Artwork
 
 // Simplified version of the helper methods
 
-internal fun com.kirilpetriv.model.Artwork.getMainImageUrl(): String {
+internal fun Artwork.getMainImageUrl(): String {
     return "https://www.artic.edu/iiif/2/${imageUuid}/full/843,/0/default.jpg"
 }
 
-internal fun com.kirilpetriv.model.Artwork.getThumbnailImageUrl(): String {
+internal fun Artwork.getThumbnailImageUrl(): String {
     return "https://www.artic.edu/iiif/2/${imageUuid}/full/100,/0/default.jpg"
 }
 

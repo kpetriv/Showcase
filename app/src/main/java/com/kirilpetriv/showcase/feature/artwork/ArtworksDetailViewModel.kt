@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class ArtworksDetailViewModel(
     private val id: Long,
-    private val repository: com.kirilpetriv.domain.repository.ArtworkRepository
+    private val repository: ArtworkRepository
 ) : ViewModel() {
 
     private val _state =

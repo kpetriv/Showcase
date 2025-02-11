@@ -80,6 +80,7 @@ dependencies {
     androidTestImplementation(libs.androidx.runner)
     androidTestImplementation(libs.ui.test.junit4)
 
+    testImplementation(libs.androidx.paging.testing)
     implementation(libs.androidx.paging.compose)
 
     implementation(project(":model"))

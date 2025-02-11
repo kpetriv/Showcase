@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.kirilpetriv.showcase.feature.artwork.ArtworksScreen
-import com.kirilpetriv.showcase.feature.artwork.artworksScreenGraph
+import com.kirilpetriv.artwork.navigation.ArtworksScreen
+import com.kirilpetriv.artwork.navigation.artworksScreenGraph
 import com.kirilpetriv.showcase.ui.theme.ShowcaseTheme
 import org.koin.compose.KoinContext
 

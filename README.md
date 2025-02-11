@@ -6,12 +6,13 @@
 - A list item should have a title, artist_display, and a thumbnail
 - List items are clickable and open a detail screen with the main image and description. 
 - The detail screen has a top bar with a back button to return to the list.
-- The list should have 50 items using the limiting parameter or paginated to avoid excessive data loading.
+- The list in the initial screen should be paginated
+- The detail screen should only take an id and should be a standalone screen in all functionality
 
 ### API
 - Base URL: https://api.artic.edu/api/v1/
 - Endpoint: artworks
-- Query parameters: ?fields=id,title,artist_display,image_id,description&page=1&limit=50
+- Query parameters: ?fields=id,title,artist_display,image_id,description
 
 ### URL creation for images
 - Main image: https://www.artic.edu/iiif/2/{image_id}/full/843,/0/default.jpg
@@ -35,6 +36,17 @@ Service -> Repository -> ViewModel -> View
 ### Navigation
 I will use the compose navigation graph to navigate between the list and detail screen.
 
+### Modularisation
+The module structure is pretty straightforward:
+
+- Network (has the rest service)
+- Database (to be implemented)
+- Data (depends on the Network and Database. This module has the repository exposed for fetching the required data)
+- Domain (the place for the repository interfaces and usecases at some point)
+- Model (pure kotlin module with domain models)
+- Artwork (feature module that has the composables for the artwork screens and the navigation graph)
+- App (houses the top level navigation logic and the activity)
+
 ### Testing
 I plan to write unit tests for the ViewModel, repository, and transformer at the least to give good coverage
 for the existing logic. Using mockk for mocking the dependencies.
@@ -50,20 +62,8 @@ Time permitting, I would like to have end-to-end tests (UI) for the main A/C's o
 - Testing: JUnit, Mockk, Espresso
 
 ## Notes
-- The API brings a randomized subset of items, so the list may be different each time. Some items 
-may have missing fields and are nullable. I didn't add any error handling for the missing fields
-as that is not the focus of the task. 
+- The next step is to add logging and HTTP logging (okhttp intercepter for the retrofit and timer library for logs)
 
-- I assume that the API will always return the fields, so UI is
-not adjusted for missing fields. Default image placeholders can be used for items that are not there.
-I also wanted to mention that composable previews were skipped completely due to the simplicity of
-the UI. 
-
-- For the UI test there is room for improvement to create robots to basically abstract the 
-interaction with the UI into a more readable format and extract hardcoded strings into constants.
-
-- I planned to finish the task within the 3 hours and I think this is roughly the amount of time it
-took, may be slightly over it as I had to work in separate small time chunks.
 
 ## Overview
 List Screen | Detail Screen | Walkthrough Video

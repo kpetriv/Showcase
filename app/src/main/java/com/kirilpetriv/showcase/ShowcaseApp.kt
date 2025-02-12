@@ -1,6 +1,7 @@
 package com.kirilpetriv.showcase
 
 import android.app.Application
+import com.kirilpetriv.logger.Logger
 import com.kirilpetriv.showcase.di.showcaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -14,6 +15,7 @@ class ShowcaseApp : Application() {
             androidLogger()
             androidContext(this@ShowcaseApp)
             modules(showcaseModule)
+            Logger.setup(type = Logger.Type.DEBUG)
         }
     }
 }

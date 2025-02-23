@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.kirilpetriv.artwork.navigation.ArtworksScreen
 import com.kirilpetriv.artwork.navigation.artworksScreenGraph
-import com.kirilpetriv.showcase.ui.theme.ShowcaseTheme
+import com.kirilpetriv.compose.theme.ShowcaseTheme
 import org.koin.compose.KoinContext
 
 class MainActivity : ComponentActivity() {

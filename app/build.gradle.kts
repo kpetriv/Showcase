@@ -84,4 +84,5 @@ dependencies {
     implementation(project(":model"))
     implementation(project(":artwork"))
     implementation(project(":domain"))
+    implementation(project(":compose"))
 }
